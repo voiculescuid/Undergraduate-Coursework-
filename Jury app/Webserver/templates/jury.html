@@ -1,0 +1,40 @@
+{%  extends "layout.html" %}
+
+{% block content %}
+
+{% if competition is defined %}
+<form>
+    <div class="list-group">
+        {% for participant in participants %}
+        <div class="form-row">
+            <div class="col-md-1 mb-1">
+                <input type="text" class="form-control" placeholder="#{{participant.id}}" disabled>
+            </div>
+            <div class="col-md-4 mb-3">
+                <input type="text" class="form-control" placeholder="Name: {{participant.round_competitor_name}} "
+                       disabled>
+            </div>
+            <div class="col-md-4 mb-3">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroupPrepend">@</span>
+                    </div>
+                    <input type="text" name="grad[]" class="form-control"
+                           placeholder=" Number: {{participant.round_competitor_numb}} " disabled>
+                </div>
+            </div>
+            <div class="col-md-2 mb-2">
+                <input type="number" class="form-control" placeholder="1">
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+{% else %}
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <strong>Hello!</strong> No competition!
+</div>
+{% endif %}
+
+{% endblock %}

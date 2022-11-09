@@ -1,0 +1,23 @@
+{%  extends "layout.html" %}
+
+{% block content %}
+
+    {% if competitions is defined %}
+      {% for comp in competitions %}
+
+          <div class="card" style="width: 18rem;">
+              <img class="card-img-top" src="/static/resources/img.jpg" alt="Card image">
+              <div class="card-body">
+                <h5 class="card-title">{{ comp.comp_name }}</h5>
+                <p class="card-text">{{comp.comp_description}}</p>
+                <a href="/showresult?comp={{comp.comp_id}}" class="btn btn-primary">Results</a>
+              </div>
+            </div>
+      {% endfor %}
+    {% else %}
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+          <strong>Hello!</strong> It looks like something has gone seriously wrong!
+        </div>
+    {% endif %}
+
+{% endblock %}

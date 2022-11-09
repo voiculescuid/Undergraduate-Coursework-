@@ -1,0 +1,34 @@
+{%  extends "layout.html" %}
+
+{% block content %}
+
+  {% if paritcipants is defined %}
+        <table class="table">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Name</th>
+              <th scope="col">Number</th>
+              <th scope="col">Grade</th>
+            </tr>
+          </thead>
+          <tbody>
+
+      {% for comp in paritcipants %}
+              <tr>
+              <th scope="row">{{comp.competitor_id}}</th>
+              <td> {{comp.competitor_name}} </td>
+              <td> {{comp.competitor_numb}} </td>
+              <td> {{comp.competitor_grade}} </td>
+            </tr>
+      {% endfor %}
+
+          </tbody>
+        </table>
+    {% else %}
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+          <strong>Hello!</strong> It looks like something has gone seriously wrong!
+        </div>
+    {% endif %}
+
+{% endblock %}

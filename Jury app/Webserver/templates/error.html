@@ -1,0 +1,33 @@
+{%  extends "layout.html" %}
+
+{% block content %}
+
+{%if error == 1 %}
+<div class="alert alert-danger" role="alert">
+    <h4 class="alert-heading">Error!</h4>
+    <p>You must be logged in to perform this action!</p>
+</div>
+{% elif error == 2 %}
+<div class="alert alert-danger" role="alert">
+    <h4 class="alert-heading">Error!</h4>
+    <p>You dont have enough permision!</p>
+</div>
+{% elif error == 3 %}
+<div class="alert alert-danger" role="alert">
+    <h4 class="alert-heading">Error!</h4>
+    <p>Invalid username or password!</p>
+</div>
+{% elif error == 4 %}
+<div class="alert alert-success" role="alert">
+  <h4 class="alert-heading">Well done!</h4>
+  <p>Registration complete!</p>
+  <hr>
+</div>
+{% elif error == 5 %}
+<div class="alert alert-danger" role="alert">
+    <h4 class="alert-heading">Error!</h4>
+    <p>Something goes wrong!</p>
+</div>
+{% endif %}
+
+{% endblock %}

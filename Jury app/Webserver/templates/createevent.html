@@ -1,0 +1,123 @@
+{%  extends "layout.html" %}
+
+{% block content %}
+<form>
+ <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputName">Name</label>
+      <input type="email" class="form-control" id="inputName" placeholder="Competition name">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlTextarea1">Description</label>
+    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+  </div>
+    <div class="form-row">
+    <div class="col-auto my-1">
+      <label class="mr-sm-2" for="inlineFormCustomSelect">Type</label>
+      <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+        <option selected>Select</option>
+        <option value="1">Battle</option>
+        <option value="2">Sincron</option>
+        <option value="3">Asincron</option>
+      </select>
+    </div>
+    <div class="col-auto my-1">
+      <label for="validationCustom05">Rounds</label>
+      <input type="number" class="form-control" id="validationCustom05" placeholder="1" required>
+    </div>
+  </div>
+
+    <div class="row justify-content-center my-5">
+        <div class="col-6">
+          <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th scope="col">Round</th>
+                  <th scope="col">Description</th>
+                  <th scope="col">Begin Time</th>
+                  <th scope="col">End Time</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">1</th>
+                  <td>#</td>
+                  <td>#</td>
+                  <td>#</td>
+                </tr>
+              </tbody>
+            </table>
+        </div>
+        <div class="col-6">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th scope="col">ID</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">Number</th>
+                  <th scope="col">Grade</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">1</th>
+                  <td>#</td>
+                  <td>#</td>
+                  <td>#</td>
+                </tr>
+              </tbody>
+            </table>
+        </div>
+      </div>
+
+    <p class="my-2">
+      <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseR" aria-expanded="false" aria-controls="collapseExample">
+        Add round
+      </button>
+        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseP" aria-expanded="false" aria-controls="collapseExample">
+        Add competitor
+      </button>
+    </p>
+
+    <div class="collapse" id="collapseR">
+      <div class="card card-body">
+          <div class="form-row">
+            <div class="form-group col-md-3">
+              <label for="roundName">Round name</label>
+              <input type="text" class="form-control" id="roundName">
+            </div>
+            <div class="form-group col-md-9">
+              <label for="roundDescription">Round description</label>
+              <input type="text" class="form-control" id="roundDescription">
+            </div>
+          </div>
+      </div>
+    </div>
+
+        <div class="collapse" id="collapseP">
+      <div class="card card-body">
+          <div class="form-row">
+            <div class="form-group col-md-3">
+              <label for="compName">Competitor name</label>
+              <input type="text" class="form-control" id="compName">
+            </div>
+            <div class="form-group col-md-9">
+              <label for="compNumber">Competitor number</label>
+                <input type="number" class="form-control" id="compNumber" placeholder="1" required>
+            </div>
+          </div>
+      </div>
+    </div>
+
+  <div class="form-group">
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" value="" id="invalidCheck2" required>
+      <label class="form-check-label" for="invalidCheck2">
+        Agree to terms and conditions
+      </label>
+    </div>
+  </div>
+  <button class="btn btn-primary" type="submit">Submit form</button>
+</form>
+{% endblock %}

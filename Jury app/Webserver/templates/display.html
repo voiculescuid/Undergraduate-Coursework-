@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <!-- main CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <title>Top</title>
+</head>
+<body>
+<!-- Content -->
+<div class="row d-flex justify-content-center my-5">
+    <div class="my-5 mx-5">
+        {% if paritcipants is defined %}
+        <table class="table">
+            <thead class="thead-dark">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Number</th>
+                <th scope="col">Grade</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            {% for comp in paritcipants %}
+            <tr>
+                <th scope="row">{{ loop.index }}</th>
+                <td> {{comp.competitor_name}}</td>
+                <td> {{comp.competitor_numb}}</td>
+                <td> {{comp.competitor_grade}}</td>
+            </tr>
+            {% endfor %}
+
+            </tbody>
+        </table>
+        {% else %}
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <strong>Hello!</strong> It looks like something has gone seriously wrong!
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+</body>
+</html>

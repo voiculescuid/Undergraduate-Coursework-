@@ -1,0 +1,158 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand badge badge-secondary text-white" href="/"><h5>Jury Duty</h5></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="/home">Info<span class="sr-only">(current)</span></a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="/display">Display</a>
+            </li>
+
+            {% if current_user.user_authority == 'org' or current_user.user_authority == 'admin' %}
+            <li class="nav-item">
+                <a class="nav-link" href="/createevent">Crate</a>
+            </li>
+            {% endif %}
+
+            {% if current_user.user_authority == 'jury' or current_user.user_authority == 'admin' %}
+            <li class="nav-item">
+                <a class="nav-link" href="/jury">Jury</a>
+            </li>
+            {% endif %}
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                   aria-haspopup="true" aria-expanded="false">
+                    Show
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="/showcompetitors">Participants</a>
+                    <a class="dropdown-item" href="/showevent">Competitions</a>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link disabled text-success" href="#">Online</a>
+            </li>
+        </ul>
+
+        {% if current_user.is_authenticated %}
+        <a class="btn btn-outline-danger my-2 mx-2 my-sm-0" href="/logout">Log out</a>
+        {% else %}
+        <button class="btn btn-outline-success my-2 mx-2 my-sm-0" data-toggle="modal"
+                data-target="#elegantSignInModalForm">Log in
+        </button>
+        {% endif %}
+        {% if current_user.user_authority == 'admin' %}
+        <button class="btn btn-outline-success my-2 mx-2 my-sm-0" data-toggle="modal"
+                data-target="#elegantSignUpModalForm">Register jury
+        </button>
+        {% endif %}
+
+    </div>
+
+    <div class="modal fade" id="elegantSignUpModalForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <!--Content-->
+            <div class="modal-content form-elegant">
+                <!--Header-->
+                <div class="modal-header text-center">
+                    <h3 class="modal-title w-100 dark-grey-text font-weight-bold my-3" id="myModalLabel"><strong>
+                        Register</strong></h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <!--Body-->
+
+                <div class="modal-body mx-4">
+                    <!--Body-->
+                    <form action="\register" method="post">
+                        <div class="md-form mb-3">
+                            <input type="text" id="Form-username1" name="username" class="form-control validate">
+                            <label data-error="wrong" data-success="right" for="Form-email1">Your username</label>
+                        </div>
+
+                        <div class="md-form pb-3">
+                            <input type="password" id="Form-pass1" name="password" class="form-control validate">
+                            <label data-error="wrong" data-success="right" for="Form-pass1">Your password</label>
+                        </div>
+
+                        <div class="md-form pb-3">
+                            <input type="email" id="Form-email1" name="email" class="form-control validate">
+                            <label data-error="wrong" data-success="right" for="Form-pass1">Your email</label>
+                        </div>
+
+                        <div class="md-form pb-3">
+                            <input type="password" id="Form-keyword1" name="keyword" class="form-control validate">
+                            <label data-error="wrong" data-success="right" for="Form-pass1">Your keyword</label>
+                        </div>
+
+                        <div class="text-center mb-3">
+                            <button type="submit" class="btn blue-gradient btn-block btn-rounded z-depth-1a">Register
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!--/.Content-->
+        </div>
+    </div>
+    <!-- Sign up Modal -->
+
+    <div class="modal fade" id="elegantSignInModalForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <!--Content-->
+            <div class="modal-content form-elegant">
+                <!--Header-->
+                <div class="modal-header text-center">
+                    <h3 class="modal-title w-100 dark-grey-text font-weight-bold my-3" id="myModalLabel2"><strong>Sign
+                        in</strong></h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <!--Body-->
+                <form action="/login" method="post">
+                    <div class="modal-body mx-4">
+                        <!--Body-->
+                        <div class="md-form mb-5">
+                            <input type="text" name="username" id="Form-username2" class="form-control validate">
+                            <label data-error="wrong" data-success="right" for="Form-email1">Your username</label>
+                        </div>
+
+                        <div class="md-form pb-3">
+                            <input type="password" name="password" id="Form-pass2" class="form-control validate">
+                            <label data-error="wrong" data-success="right" for="Form-pass1">Your password</label>
+                            <p class="font-small blue-text d-flex justify-content-end">Forgot <a href="#"
+                                                                                                 class="blue-text ml-1">
+                                Password?</a></p>
+                        </div>
+
+                        <div class="text-center mb-3">
+                            <button type="submit" class="btn blue-gradient btn-block btn-rounded z-depth-1a">Sign in
+                            </button>
+                        </div>
+                    </div>
+                </form>
+                <!--Footer-->
+                <div class="modal-footer mx-5 pt-3 mb-1">
+                    <p class="font-small grey-text d-flex justify-content-end">Not a member?
+                        <a href="#" class="blue-text ml-1" data-toggle="modal" data-target="#elegantSignUpModalForm">
+                            Sign Up
+                        </a>
+                    </p>
+                </div>
+            </div>
+            <!--/.Content-->
+        </div>
+    </div>
+    <!-- Modal Sign In-->
+</nav>
